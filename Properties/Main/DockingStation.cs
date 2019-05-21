@@ -20,5 +20,10 @@ namespace Boris_Bikes_Csharp
         {
             dockedBikes.Add(bike);
         }
+
+        public void ReleaseBike()
+        {
+            dockedBikes.RemoveAt(dockedBikes.Count - 1);
+        }
     }
 }

@@ -22,5 +22,16 @@ namespace Boris_Bikes_Csharp.Test
             dockingstation.DockBike(bike);
             Assert.AreEqual(1, dockingstation.GetDockedBikes().Count);
         }
+
+        [Test, Description("Can release a bike from docking station")]
+        public void CanReleaseBike()
+        {
+            var bike = Mock.Of<Bike>();
+            DockingStation dockingstation = new DockingStation();
+            dockingstation.DockBike(bike);
+            Assert.AreEqual(1, dockingstation.GetDockedBikes().Count);
+            dockingstation.ReleaseBike();
+            Assert.AreEqual(0, dockingstation.GetDockedBikes().Count);
+        }
     }
 }
