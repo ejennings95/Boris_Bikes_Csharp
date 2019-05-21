@@ -46,9 +46,29 @@ namespace Boris_Bikes_Csharp.Test
         {
             var bike = Mock.Of<Bike>();
             var bike2 = Mock.Of<Bike>();
-            DockingStation dockingstation = new DockingStation(2);
+            DockingStation dockingstation = new DockingStation(1);
             dockingstation.DockBike(bike);
             dockingstation.DockBike(bike2);
+        }
+
+        [Test, Description("Cannot relesase bike if docking station is empty - none docked ever")]
+        [ExpectedException(typeof(DockingStationEmptyException))]
+        public void EmptyDockingStation()
+        {
+            DockingStation dockingstation = new DockingStation();
+            dockingstation.ReleaseBike();
+        }
+
+        [Test, Description("Cannot relesase bike if docking station is empty")]
+        [ExpectedException(typeof(DockingStationEmptyException))]
+        public void EmptyDockingStation2()
+        {
+            var bike = Mock.Of<Bike>();
+            DockingStation dockingstation = new DockingStation();
+            dockingstation.DockBike(bike);
+            dockingstation.ReleaseBike();
+            dockingstation.ReleaseBike();
+
         }
     }
 }
