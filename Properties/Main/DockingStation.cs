@@ -15,5 +15,10 @@ namespace Boris_Bikes_Csharp
         {
             return dockedBikes;
         }
+
+        public void DockBike (Bike bike)
+        {
+            dockedBikes.Add(bike);
+        }
     }
 }
