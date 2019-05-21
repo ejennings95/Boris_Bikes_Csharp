@@ -10,7 +10,6 @@ namespace Boris_Bikes_Csharp.Test
         public void EmptyDockedBikes()
         {
             DockingStation dockingstation = new DockingStation();
-            Console.WriteLine(dockingstation.GetDockedBikes());
             Assert.AreEqual(0, dockingstation.GetDockedBikes().Count);
         }
 
@@ -32,6 +31,13 @@ namespace Boris_Bikes_Csharp.Test
             Assert.AreEqual(1, dockingstation.GetDockedBikes().Count);
             dockingstation.ReleaseBike();
             Assert.AreEqual(0, dockingstation.GetDockedBikes().Count);
+        }
+
+        [Test, Description("Docking station capacity is defaulted to 20")]
+        public void DockCapacity20Bikes()
+        {
+            DockingStation dockingstation = new DockingStation();
+            Assert.AreEqual(20, dockingstation.GetCapacity());
         }
     }
 }

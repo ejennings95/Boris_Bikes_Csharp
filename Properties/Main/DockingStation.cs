@@ -6,6 +6,7 @@ namespace Boris_Bikes_Csharp
     public class DockingStation
     {
         List<Bike> dockedBikes = new List<Bike>();
+        public const int CapacityOfDockingStation = 20;
 
         public DockingStation()
         {   
@@ -14,6 +15,11 @@ namespace Boris_Bikes_Csharp
         public List<Bike> GetDockedBikes ()
         {
             return dockedBikes;
+        }
+
+        public int GetCapacity()
+        {
+            return CapacityOfDockingStation;
         }
 
         public void DockBike (Bike bike)
