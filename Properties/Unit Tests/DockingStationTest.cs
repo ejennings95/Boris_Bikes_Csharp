@@ -39,5 +39,16 @@ namespace Boris_Bikes_Csharp.Test
             DockingStation dockingstation = new DockingStation();
             Assert.AreEqual(20, dockingstation.GetCapacity());
         }
+
+        [Test, Description("Cannot dock bike if docking station is full")]
+        [ExpectedException(typeof(DockingStationFullException))]
+        public void FullDockingStation()
+        {
+            var bike = Mock.Of<Bike>();
+            var bike2 = Mock.Of<Bike>();
+            DockingStation dockingstation = new DockingStation(2);
+            dockingstation.DockBike(bike);
+            dockingstation.DockBike(bike2);
+        }
     }
 }
