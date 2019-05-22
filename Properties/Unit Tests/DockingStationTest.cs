@@ -76,10 +76,9 @@ namespace Boris_Bikes_Csharp.Test
         public void BrokenBike()
         {
             Mock<Bike> bike = new Mock<Bike>();
-            bike.CallBase = true;
             bike.Setup(x => x.GetCondition()).Returns("Broken");
             DockingStation dockingstation = new DockingStation();
-            dockingstation.DockBike(bike);
+            dockingstation.DockBike(bike.Object);
             dockingstation.ReleaseBike();
         }
     }

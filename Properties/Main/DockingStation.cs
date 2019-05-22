@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Boris_Bikes_Csharp
 {
@@ -44,11 +45,20 @@ namespace Boris_Bikes_Csharp
             {
                 throw new DockingStationEmptyException("Docking station is empty");
             }
+
+            ShuffleDockedBikes();
+
             if (dockedBikes[dockedBikes.Count - 1].GetCondition() == "Broken")
             {
                 throw new BikeIsNotWorkingException("This bike is not working");
             }
             dockedBikes.RemoveAt(dockedBikes.Count - 1);
+        }
+
+        private void ShuffleDockedBikes()
+        {
+            var rand = new Random();
+            dockedBikes = dockedBikes.OrderBy(x => rand.Next()).ToList();
         }
     }
 }
