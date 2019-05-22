@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using Moq;
+
 namespace Boris_Bikes_Csharp.Test
 {
     public class DockingStationTest
@@ -68,7 +69,18 @@ namespace Boris_Bikes_Csharp.Test
             dockingstation.DockBike(bike);
             dockingstation.ReleaseBike();
             dockingstation.ReleaseBike();
+        }
 
+        [Test, Description("Cannot relesase bike if the bike is broken")]
+        [ExpectedException(typeof(BikeIsNotWorkingException))]
+        public void BrokenBike()
+        {
+            Mock<Bike> bike = new Mock<Bike>();
+            bike.CallBase = true;
+            bike.Setup(x => x.GetCondition()).Returns("Broken");
+            DockingStation dockingstation = new DockingStation();
+            dockingstation.DockBike(bike);
+            dockingstation.ReleaseBike();
         }
     }
 }

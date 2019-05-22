@@ -44,6 +44,10 @@ namespace Boris_Bikes_Csharp
             {
                 throw new DockingStationEmptyException("Docking station is empty");
             }
+            if (dockedBikes[dockedBikes.Count - 1].GetCondition() == "Broken")
+            {
+                throw new BikeIsNotWorkingException("This bike is not working");
+            }
             dockedBikes.RemoveAt(dockedBikes.Count - 1);
         }
     }

@@ -9,7 +9,7 @@ namespace Boris_Bikes_Csharp
         {
         }
 
-        public string GetCondition()
+        public virtual string GetCondition()
         {
             return condition;
         }

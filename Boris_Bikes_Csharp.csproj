@@ -54,6 +54,7 @@
     <Compile Include="Properties\Main\DockingStationFullException.cs" />
     <Compile Include="Properties\Main\DockingStationEmptyException.cs" />
     <Compile Include="Properties\Unit Tests\BikeTest.cs" />
+    <Compile Include="Properties\Main\BikeIsNotWorkingException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\Unit Tests\" />
